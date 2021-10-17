@@ -1,41 +1,47 @@
 const express = require('express');
-
+const { Kafka } = require('kafkajs');
+const Consumer = require('./ServiceKafka/consumer');
 const app = express();
 
 app.use(express.json());
 
 app.listen(3000);
 
-const fun = async () => {
-  const { Kafka } = require('kafkajs');
+const consu = new Consumer('test');
 
-  const kafka = new Kafka({
-    brokers: ['kafka:29092'],
-  });
+consu.consume({ topic: 'test-topic', fromBeginning: true });
 
-  const producer = kafka.producer();
+// const fun = async () => {
+//   const kafka = new Kafka({
+//     brokers: ['localhost:9092'],
+//   });
 
-  await producer.connect();
+//   const producer = kafka.producer();
 
-  //   await producer.send({
-  //     topic: 'test-topic',
-  //     messages: [{ value: 'Hello KafkaJS user!' }],
-  //   });
+//   await producer.connect();
 
-  //   await producer.disconnect();
+//   await producer.send({
+//     topic: 'test-topic',
+//     messages: [{ value: 'Hello KafkaJS user!' }],
+//   });
 
-  //   const consumer = kafka.consumer({ groupId: 'test-group' });
+//   await producer.disconnect();
 
-  //   await consumer.connect();
-  //   await consumer.subscribe({ topic: 'test-topic', fromBeginning: true });
+//   const consumer = kafka.consumer({ groupId: 'test-group' });
 
-  //   await consumer.run({
-  //     eachMessage: async ({ topic, partition, message }) => {
-  //       console.log({
-  //         value: message.value.toString(),
-  //       });
-  //     },
-  //   });
-};
+//   await consumer.connect();
 
-fun();
+//   await consumer.subscribe({ topic: 'test-topic', fromBeginning: true });
+
+//   await consumer.run({
+//     eachMessage: async ({ topic, partition, message }) => {
+//       console.log({
+//         value: message.value.toString(),
+//       });
+//     },
+//   });
+
+//   console.log('asdkndas');
+// };
+
+// fun();

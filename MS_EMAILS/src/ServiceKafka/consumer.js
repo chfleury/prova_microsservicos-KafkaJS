@@ -1,6 +1,6 @@
-import { Kafka } from 'kafkajs';
+const { Kafka } = require('kafkajs');
 
-export default class Consumer {
+class Consumer {
   constructor(groupId) {
     const kafka = new Kafka({
       brokers: ['localhost:9092'],
@@ -21,3 +21,5 @@ export default class Consumer {
     });
   }
 }
+
+module.exports = Consumer;
