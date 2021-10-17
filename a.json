@@ -1,0 +1,8 @@
+{
+  "level": "ERROR",
+  "timestamp": "2021-10-17T15:11:19.795Z",
+  "logger": "kafkajs",
+  "message": "[BrokerPool] Failed to connect to seed broker, trying another broker from the list: Connection error: getaddrinfo EAI_AGAIN broker-kafka",
+  "retryCount": 0,
+  "retryTime": 314
+}
